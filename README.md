@@ -41,7 +41,7 @@ Initialize this sdk with a Datadog api key. Provided tags are sent with all metr
 
 Enqueue distribution metric counts
 
-#### flush()
+#### flush(): Promise<bool>
 
 Flush all metric events currently enqueued.
 
