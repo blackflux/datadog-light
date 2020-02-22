@@ -26,7 +26,7 @@ const Datadog = require('datadog-light');
 const dd = Datadog("DATADOG_API_KEY");
 
 dd.DistributionMetric.enqueue('metric.name', [new Date() / 1]);
-dd.DistributionMetric.flush('metric.name', [new Date() / 1]);
+dd.DistributionMetric.flush();
 ```
 
 ## Functions
