@@ -21,7 +21,7 @@ Install with [npm](https://www.npmjs.com/):
 
 <!-- eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies -->
 ```js
-const Datadog = require('../src/index');
+const Datadog = require('datadog-light');
 
 const dd = Datadog("DATADOG_API_KEY");
 
