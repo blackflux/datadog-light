@@ -23,7 +23,7 @@ Install with [npm](https://www.npmjs.com/):
 ```js
 const Datadog = require('datadog-light');
 
-const dd = Datadog("DATADOG_API_KEY");
+const dd = Datadog('DATADOG_API_KEY');
 
 dd.DistributionMetric.enqueue('metric.name', [new Date() / 1]);
 dd.DistributionMetric.flush();
