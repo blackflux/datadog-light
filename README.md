@@ -11,3 +11,40 @@
 
 Lightweight SDK to access Datadog API
 
+## Install
+
+Install with [npm](https://www.npmjs.com/):
+
+    $ npm install --save datadog-light
+
+## Usage
+
+<!-- eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies -->
+```js
+const Datadog = require('../src/index');
+
+const dd = Datadog("DATADOG_API_KEY");
+
+dd.DistributionMetric.enqueue('metric.name', [new Date() / 1]);
+dd.DistributionMetric.flush('metric.name', [new Date() / 1]);
+```
+
+## Functions
+
+### Constructor (API_KEY, { tags: Array = [] })
+
+Initialize this sdk with a Datadog api key. Provided tags are sent with all metrics without having to specify them again.
+
+### DistributionMetric
+
+#### enqueue(metric: String, Array[Unix] | Object(Unix: Count), { tags: Array = [] })
+
+Enqueue distribution metric counts
+
+#### flush()
+
+Flush all metric events currently enqueued.
+
+## Why does this package exist?
+
+This package was built to be used in serverless environments where state is hard to come by. Convenient when e.g. tracking certain actions within an AWS Lambda function.
