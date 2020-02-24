@@ -17,7 +17,7 @@ describe('Testing datadog-light', {
 
   describe('Testing sendDistributionMetric', () => {
     it('Testing points as array', async () => {
-      dd.DistributionMetric.enqueue('metric.name', [unix, unix]);
+      dd.DistributionMetric.enqueue('metric.name', [unix, unix + 1]);
       const r = await dd.DistributionMetric.flush();
       expect(r).to.equal(true);
     });
@@ -30,7 +30,7 @@ describe('Testing datadog-light', {
 
     it('Testing multiple enqueue', async () => {
       dd.DistributionMetric.enqueue('metric.name1', [unix, unix]);
-      dd.DistributionMetric.enqueue('metric.name2', [unix, unix]);
+      dd.DistributionMetric.enqueue('metric.name2', [unix, unix + 1]);
       const r = await dd.DistributionMetric.flush();
       expect(r).to.equal(true);
     });

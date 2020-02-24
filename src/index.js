@@ -28,9 +28,13 @@ module.exports = (
           Joi.assert(localTags, Joi.array().items(Joi.string()));
           queue.push({
             metric,
-            points: Array.isArray(points)
-              ? points.map((ts) => [ts / 1, [1]])
-              : Object.entries(points).map(([ts, count]) => [ts / 1, [count]]),
+            points: Object.entries(
+              Array.isArray(points)
+                ? points
+                  .map((e) => String(e))
+                  .reduce((p, ts) => Object.assign(p, { [ts]: (p[ts] || 0) + 1 }), {})
+                : points
+            ).map(([ts, count]) => [ts / 1, [count]]),
             type: 'distribution',
             tags: [...new Set([
               ...globalTags,
