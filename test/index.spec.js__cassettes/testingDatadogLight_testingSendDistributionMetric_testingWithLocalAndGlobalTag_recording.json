@@ -1,0 +1,32 @@
+[
+  {
+    "scope": "https://api.datadoghq.com:443",
+    "method": "POST",
+    "path": "/api/v1/distribution_points?api_key=datadog-api-key",
+    "body": {
+      "series": [
+        {
+          "metric": "metric.name",
+          "points": [
+            [
+              1582401450000,
+              [
+                1
+              ]
+            ]
+          ],
+          "type": "distribution",
+          "tags": [
+            "global-tag",
+            "local-tag"
+          ]
+        }
+      ]
+    },
+    "status": 202,
+    "response": {
+      "status": "ok"
+    },
+    "responseIsBinary": false
+  }
+]
