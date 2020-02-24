@@ -30,7 +30,9 @@ module.exports = (
             metric,
             points: Object.entries(
               Array.isArray(points)
-                ? points.reduce((p, ts) => Object.assign(p, { [ts]: (p[ts] || 0) + 1 }), {})
+                ? points
+                  .map((e) => String(e))
+                  .reduce((p, ts) => Object.assign(p, { [ts]: (p[ts] || 0) + 1 }), {})
                 : points
             ).map(([ts, count]) => [ts / 1, [count]]),
             type: 'distribution',
