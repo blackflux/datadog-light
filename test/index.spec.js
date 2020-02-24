@@ -47,7 +47,7 @@ describe('Testing datadog-light', {
       expect(r).to.equal(true);
     });
 
-    it('Testing with local abd global tag', async () => {
+    it('Testing with local and global tag', async () => {
       await ddGlobalTag.DistributionMetric.enqueue('metric.name', [unix], { tags: ['local-tag'] });
       const r = await ddGlobalTag.DistributionMetric.flush();
       expect(r).to.equal(true);
