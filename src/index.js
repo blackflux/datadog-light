@@ -7,7 +7,7 @@ module.exports = (
   apiKey,
   { tags: globalTags = [] } = {}
 ) => {
-  Joi.assert(apiKey, Joi.string());
+  Joi.assert(apiKey, Joi.string().optional());
   Joi.assert(globalTags, Joi.array().items(Joi.string()));
 
   return {
@@ -20,6 +20,7 @@ module.exports = (
           points,
           { tags: localTags = [] } = {}
         ) => {
+          Joi.assert(apiKey, Joi.string());
           Joi.assert(metric, Joi.string());
           Joi.assert(points, Joi.alternatives(
             Joi.array().items(Joi.number().integer().min(0)),
