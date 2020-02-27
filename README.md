@@ -29,6 +29,8 @@ dd.DistributionMetric.enqueue('metric.name', [new Date() / 1]);
 dd.DistributionMetric.flush();
 ```
 
+All input is validated using Joi.
+
 ## Functions
 
 ### Constructor (API_KEY, { tags: Array = [] })
