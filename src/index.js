@@ -24,7 +24,7 @@ module.exports = (
           Joi.assert(metric, Joi.string());
           Joi.assert(points, Joi.alternatives(
             Joi.array().items(Joi.number().integer().min(0)),
-            Joi.object().pattern(Joi.number().integer().min(0), Joi.number().integer().min(1))
+            Joi.object().pattern(Joi.number().integer().min(0), Joi.number().min(0))
           ));
           Joi.assert(localTags, Joi.array().items(Joi.string()));
           queue.push({
