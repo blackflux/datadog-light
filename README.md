@@ -39,7 +39,7 @@ Initialize this sdk with a Datadog api key. Provided tags are sent with all metr
 
 ### DistributionMetric
 
-#### enqueue(metric: String, Array[Unix] | Object(Unix: Count), { tags: Array = [] })
+#### enqueue(metric: String, Array[Unix] | Object(Unix: Count), { tags: Array = [], dryRun: Boolean = false })
 
 Enqueue distribution metric counts
 
