@@ -18,10 +18,7 @@ module.exports = (
         enqueue: (
           metric,
           points,
-          {
-            tags: localTags = [],
-            dryRun = false
-          } = {}
+          { tags: localTags = [] } = {}
         ) => {
           Joi.assert(apiKey, Joi.string());
           Joi.assert(metric, Joi.string());
@@ -30,9 +27,6 @@ module.exports = (
             Joi.object().pattern(Joi.number().integer().min(0), Joi.number().min(0))
           ));
           Joi.assert(localTags, Joi.array().items(Joi.string()));
-          if (dryRun === true) {
-            return;
-          }
           queue.push({
             metric,
             points: Object.entries(
