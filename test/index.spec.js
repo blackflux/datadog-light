@@ -53,6 +53,12 @@ describe('Testing datadog-light', {
       expect(r).to.equal(true);
     });
 
+    it('Testing dryRun flush', async () => {
+      await ddGlobalTag.DistributionMetric.enqueue('metric.name', [unix], { tags: ['local-tag'], dryRun: true });
+      const r = await ddGlobalTag.DistributionMetric.flush();
+      expect(r).to.equal(true);
+    });
+
     it('Testing empty flush', async () => {
       const r = await ddGlobalTag.DistributionMetric.flush();
       expect(r).to.equal(true);
