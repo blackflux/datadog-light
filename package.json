@@ -107,7 +107,7 @@
     "url": "https://github.com/blackflux/datadog-light/issues"
   },
   "dependencies": {
-    "joi-strict": "1.2.1",
+    "joi-strict": "1.2.2",
     "lodash.get": "4.4.2"
   }
 }
