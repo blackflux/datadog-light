@@ -2,7 +2,6 @@ const get = require('lodash.get');
 const request = require('request-promise-native');
 const Joi = require('joi-strict');
 
-
 module.exports = (
   apiKey,
   { tags: globalTags = [] } = {}
