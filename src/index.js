@@ -2,7 +2,6 @@ const get = require('lodash.get');
 const axios = require('axios');
 const Joi = require('joi-strict');
 
-
 module.exports = (
   apiKey,
   { tags: globalTags = [] } = {}
