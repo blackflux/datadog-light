@@ -1,5 +1,6 @@
+const assert = require('assert');
 const get = require('lodash.get');
-const request = require('request-promise-native');
+const axios = require('axios');
 const Joi = require('joi-strict');
 
 module.exports = (
@@ -45,23 +46,37 @@ module.exports = (
           if (queue.length === 0) {
             return true;
           }
-          const r = await request({
-            method: 'POST',
+          const r = await axios({
+            method: 'post',
             headers: {
               'Content-type': 'application/json'
             },
-            uri: 'https://api.datadoghq.com/api/v1/distribution_points',
-            qs: {
+            url: 'https://api.datadoghq.com/api/v1/distribution_points',
+            params: {
               api_key: apiKey
             },
-            json: true,
-            body: {
+            data: {
               series: queue.splice(0)
             }
           });
-          return get(r, 'status') === 'ok';
+          return get(r, 'data.status') === 'ok';
         }
       };
-    })()
+    })(),
+    Logger: (() => ({
+      uploadJsonArray: async (arr) => {
+        assert(Array.isArray(arr));
+        const r = await axios({
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+            'DD-API-KEY': apiKey
+          },
+          url: 'https://http-intake.logs.datadoghq.com/v1/input',
+          data: JSON.stringify(arr)
+        });
+        return get(r, 'status') === 200;
+      }
+    }))()
   };
 };
