@@ -58,4 +58,14 @@ describe('Testing datadog-light', {
       expect(r).to.equal(true);
     });
   });
+
+  describe('Testing Logger.uploadJsonArray', () => {
+    it('Testing simple upload', async () => {
+      const r = await dd.Logger.uploadJsonArray([
+        { a: '0', b: '1' },
+        { c: '2', d: '3' }
+      ]);
+      expect(r).to.equal(true);
+    });
+  });
 });

@@ -1,3 +1,4 @@
+const assert = require('assert');
 const get = require('lodash.get');
 const axios = require('axios');
 const Joi = require('joi-strict');
@@ -61,6 +62,21 @@ module.exports = (
           return get(r, 'data.status') === 'ok';
         }
       };
-    })()
+    })(),
+    Logger: (() => ({
+      uploadJsonArray: async (arr) => {
+        assert(Array.isArray(arr));
+        const r = await axios({
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+            'DD-API-KEY': apiKey
+          },
+          url: 'https://http-intake.logs.datadoghq.com/v1/input',
+          data: JSON.stringify(arr)
+        });
+        return get(r, 'status') === 200;
+      }
+    }))()
   };
 };

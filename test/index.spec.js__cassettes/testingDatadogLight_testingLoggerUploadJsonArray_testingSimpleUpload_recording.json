@@ -1,0 +1,30 @@
+[
+  {
+    "scope": "https://http-intake.logs.datadoghq.com:443",
+    "method": "POST",
+    "path": "/v1/input",
+    "body": [
+      {
+        "a": "0",
+        "b": "1"
+      },
+      {
+        "c": "2",
+        "d": "3"
+      }
+    ],
+    "status": 200,
+    "response": {},
+    "rawHeaders": [
+      "Date",
+      "Tue, 28 Sep 2021 21:59:48 GMT",
+      "Content-Type",
+      "application/json",
+      "Content-Length",
+      "2",
+      "Connection",
+      "close"
+    ],
+    "responseIsBinary": false
+  }
+]
