@@ -1,3 +1,4 @@
+const assert = require('assert');
 const get = require('lodash.get');
 const axios = require('axios');
 const Joi = require('joi-strict');
@@ -64,6 +65,7 @@ module.exports = (
     })(),
     Logger: (() => ({
       uploadJsonArray: async (arr) => {
+        assert(Array.isArray(arr));
         const r = await axios({
           method: 'post',
           headers: {
