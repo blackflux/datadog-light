@@ -61,6 +61,20 @@ module.exports = (
           return get(r, 'data.status') === 'ok';
         }
       };
-    })()
+    })(),
+    Logger: (() => ({
+      uploadJsonArray: async (arr) => {
+        const r = await axios({
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+            'DD-API-KEY': apiKey
+          },
+          url: 'https://http-intake.logs.datadoghq.com/v1/input',
+          data: JSON.stringify(arr)
+        });
+        return get(r, 'status') === 200;
+      }
+    }))()
   };
 };
