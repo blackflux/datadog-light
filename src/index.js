@@ -1,9 +1,9 @@
-const assert = require('assert');
-const get = require('lodash.get');
-const axios = require('axios');
-const Joi = require('joi-strict');
+import assert from 'assert';
+import get from 'lodash.get';
+import axios from 'axios';
+import Joi from 'joi-strict';
 
-module.exports = (
+export default (
   apiKey,
   { tags: globalTags = [] } = {}
 ) => {
