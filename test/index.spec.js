@@ -1,6 +1,6 @@
-const expect = require('chai').expect;
-const { describe } = require('node-tdd');
-const Datadog = require('../src/index');
+import { expect } from 'chai';
+import { describe } from 'node-tdd';
+import Datadog from '../src/index.js';
 
 describe('Testing datadog-light', {
   useNock: true,
