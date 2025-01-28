@@ -9,6 +9,7 @@ describe('Testing datadog-light', {
   let dd;
   let ddGlobalTag;
   let unix;
+
   beforeEach(() => {
     dd = Datadog(process.env.API_KEY);
     ddGlobalTag = Datadog(process.env.API_KEY, { tags: ['global-tag'] });
